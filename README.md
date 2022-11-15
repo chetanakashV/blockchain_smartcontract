@@ -24,6 +24,7 @@ the smart contract which is deployed on the blockchain.
 3. The product is deployed after the buyer pays the price of the item .<br/>
 4. The Seller gets the amount only after the buyer confirms that the item is delivered<br/>
 5. Users can view all the registered products and their availability<br/>
+6. Users can cancel their product anytime and they'll be refunded.<br/>
 
 
 
@@ -34,7 +35,7 @@ the smart contract which is deployed on the blockchain.
 4. The sender and the amount sent can also be changed from the left side panel to simulate different users.<br/> <br/>
 
 ## Smart Contracts<br/>
-Smart Contracts are programs on a blockchain that are triggered when certain pre conditions are met. These are used for automation. 
+Smart contracts are simply programs stored on a blockchain that run when predetermined conditions are met. They typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without any intermediary’s involvement or time loss. They can also automate a workflow, triggering the next action when conditions are met.
 
 ### Usage of Smart Contracts
 To buy the product, the buyer has to pay the price of the item to the smart contract. This amount is held by the contract till the buyer confirms that the item is delivered. Upon the confirmation, the amount held by the smart contract is transferred to the seller. If the seller doesn't deliver the product, the buyer can cancel the order and get a refund from the smart contract. The smart contract thus ensures that a seller couldn't default on the product, they make the platform trustworthy. 
