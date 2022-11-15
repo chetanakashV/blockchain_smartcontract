@@ -34,9 +34,10 @@ the smart contract which is deployed on the blockchain.
 4. The sender and the amount sent can also be changed from the left side panel to simulate different users.<br/> <br/>
 
 ## Smart Contracts<br/>
-Smart Contracts are programs on a blockchain that are triggered when certain pre conditions are met. 
+Smart Contracts are programs on a blockchain that are triggered when certain pre conditions are met. These are used for automation. 
 
-
+### Usage of Smart Contracts
+To buy the product, the buyer has to pay the price of the item to the smart contract. This amount is held by the contract till the buyer confirms that the item is delivered. Upon the confirmation, the amount held by the smart contract is transferred to the seller. The smart contract ensures that a seller couldn't default on the product, the smart contracts hence make the platform trustworthy. 
 <br/>
 
 ## Structures Used: 
