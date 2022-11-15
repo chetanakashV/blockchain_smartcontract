@@ -37,7 +37,7 @@ the smart contract which is deployed on the blockchain.
 Smart Contracts are programs on a blockchain that are triggered when certain pre conditions are met. These are used for automation. 
 
 ### Usage of Smart Contracts
-To buy the product, the buyer has to pay the price of the item to the smart contract. This amount is held by the contract till the buyer confirms that the item is delivered. Upon the confirmation, the amount held by the smart contract is transferred to the seller. The smart contract ensures that a seller couldn't default on the product, the smart contracts hence make the platform trustworthy. 
+To buy the product, the buyer has to pay the price of the item to the smart contract. This amount is held by the contract till the buyer confirms that the item is delivered. Upon the confirmation, the amount held by the smart contract is transferred to the seller. If the seller doesn't deliver the product, the buyer can cancel the order and get a refund from the smart contract. The smart contract thus ensures that a seller couldn't default on the product, they make the platform trustworthy. 
 <br/>
 
 ## Structures Used: 
@@ -48,4 +48,5 @@ Title of the product, description of the product, seller address, buyer address,
   1. registerProduct() - The function takes inputs(title, descrip, price) and creates a new product with the given arguments, the address of the seller and the generated itemId. The function also checks if the product's price is greater than zero.
   2. buy() - The function takes the itemID as an input, collects payment from the buyer. After checking if the payment is valid, the function confirms that the buyer has bought the item. The function deploys the product bought after the payment(calls the deployProduct function).
   3. deployProduct() - The function takes itemID as an argument and deploys the item selected.
-  4. delivery() - The function takes itemID as an argument. The function checks if the user trying to mark the item as delivered is actually the buyer, if yes, the amount held by the contract is transferred to the seller.
+  4. cancelProduct() - The function takes itemID as an argument and checks if the msg sender is the buyer of the product and the product hasn't been delivered yet. If yes, the amount held by the contract is transferred to the owner and the product is made available again. 
+  5. delivery() - The function takes itemID as an argument. The function checks if the user trying to mark the item as delivered is actually the buyer, if yes, the amount held by the contract is transferred to the seller.
