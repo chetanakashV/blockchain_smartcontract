@@ -36,7 +36,7 @@ contract SmartContract {
  
     }
  
-    function deployProduct(uint _itemId) public {
+    function deployProduct(uint _itemId) private {
         
         items[_itemId-1].available = false; 
         items[_itemId-1].deploy = true; 
@@ -57,7 +57,7 @@ contract SmartContract {
       require( items[_itemId-1].price == msg.value, "Please pay the exact price"); 
       require(items[_itemId-1].seller !=  msg.sender, "Seller cannot be the buyer");
       items[_itemId-1].buyer = msg.sender;
-      this.deployProduct(_itemId);
+      deployProduct(_itemId);
       //this.delivery(_itemId, msg.sender);
       emit bought( _itemId, msg.sender);
       
