@@ -10,7 +10,7 @@ contract SmartContract {
         uint itemId; 
         bool deploy; 
         uint price; 
-        address buyer; 
+        address payable buyer; 
         bool available; 
         bool delivered;
     }
@@ -20,6 +20,7 @@ contract SmartContract {
     event registered(string _title, uint _itemId, address seller);
     event bought(uint _itemId, address buyer);
     event delivered(uint _itemId);
+    event cancel( uint _itemId);
  
     function registerProduct(string memory _title, string memory _description, uint  _price) public {
         require(_price>0, "price should be  greater than zero");
@@ -36,10 +37,22 @@ contract SmartContract {
  
     }
  
-    function deployProduct(uint _itemId) private {
+    function deployProduct(uint _itemId) private  {
         
         items[_itemId-1].available = false; 
         items[_itemId-1].deploy = true; 
+    }
+
+    function cancelProduct(uint _itemId) payable  public {
+
+        require(items[_itemId-1].buyer == msg.sender, "Only buyer can cancel the order");
+        require(items[_itemId-1].delivered == false, "The item has already been delivered");
+        items[_itemId-1].available = true;
+        items[_itemId-1].deploy = false; 
+        items[_itemId-1].buyer.transfer(items[_itemId-1].price);
+        //items[_itemId-1].buyer = 0; 
+        emit cancel(_itemId);
+
     }
  
      function delivery (uint _itemId) public{
@@ -56,7 +69,7 @@ contract SmartContract {
       require( items[_itemId-1].available == true , "The item has already been brought");
       require( items[_itemId-1].price == msg.value, "Please pay the exact price"); 
       require(items[_itemId-1].seller !=  msg.sender, "Seller cannot be the buyer");
-      items[_itemId-1].buyer = msg.sender;
+      items[_itemId-1].buyer = payable(msg.sender);
       deployProduct(_itemId);
       //this.delivery(_itemId, msg.sender);
       emit bought( _itemId, msg.sender);
